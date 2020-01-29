@@ -8,6 +8,7 @@ class Recipes extends CI_Controller {
 		$data['main_view'] = "recipes/index";
 
 		$this->load->view('layouts/main', $data);
+
 	}
 
 	public function add(){
@@ -16,13 +17,14 @@ class Recipes extends CI_Controller {
 		$this->form_validation->set_rules('Beschrijving', 'Beschrijving', 'trim|required|min_length[4]');
 		$this->form_validation->set_rules('Benodigdheden', 'Benodigdheden', 'trim|required|min_length[4]');
 		$this->form_validation->set_rules('Recept', 'Recept', 'trim|required|min_length[4]');
-		$this->form_validation->set_rules('Foto', 'Foto', 'required');
 
 		if ($this->form_validation->run() == false){
 
 			$data['main_view'] = 'recipes/index';
 
 			$this->load->view('layouts/main', $data);
+
+			redirect('recipes/index');
 
 		}
 		else{
@@ -31,12 +33,17 @@ class Recipes extends CI_Controller {
 				$this->session->set_flashdata('recipe_added', "Recept toegevoegd");
 				redirect('recipes/index');
 			}else{
+				$this->session->set_flashdata('errors', 'Er is iets mis gegaan, probeer het later nogmaals.');
+				redirect('recipes/index');
 			}
 		}
 	}
 
 	public function delete($id = null){
 		if ($this->recipe_model->remove_recipe($id)){
+			redirect('recipes/index');
+		}else{
+			$this->session->flashdata('errors', 'Er is iets mis gegaan, probeer het later nogmaals.');
 			redirect('recipes/index');
 		}
 	}

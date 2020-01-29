@@ -1,6 +1,17 @@
 
 <div class="container">
-<h1>Recipes</h1>
+	<?php if ($this->session->flashdata('errors')):?>
+
+		<div class="alert alert-danger alert-dismissible fade show" role="alert">
+			<?php echo $this->session->flashdata('errors'); ?>
+			<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+			</button>
+		</div>
+
+	<?php endif; ?>
+
+	<h1>Recipes</h1>
 	<?php if($this->session->userdata('logged_in')): ?>
 		<button type="button" class="btn btn-success" data-toggle="modal" data-target="#recipeAdder">
 			Recept Toevoegen
@@ -12,7 +23,7 @@
 	<div class="row" style="padding-top: 3%">
 		<div class="col-sm">
 			<div class="card" style="width: 18rem;" data-toggle="modal" data-target=<?php echo $recipes[$num]->id ?>>
-				<img class="card-img-top" src="https://via.placeholder.com/350x150" alt="Card image cap">
+				<img class="card-img-top" style="height: 12rem" src="recipeImages/<?php echo $recipes[$num]->image;?>" alt="Card image cap">
 				<div class="card-body">
 					<h5 class="card-title"><?php echo $recipes[$num]->name; ?></h5>
 					<p class="card-text"><?php echo $recipes[$num]->description; ?></p>
@@ -26,7 +37,7 @@
 		</div>
 		<div class="col-sm">
 			<div class="card" style="width: 18rem;">
-				<img class="card-img-top" src="https://via.placeholder.com/350x150" alt="Card image cap">
+				<img class="card-img-top" style="height: 12rem" src="recipeImages/<?php echo $recipes[$num]->image;?>" alt="Card image cap">
 				<div class="card-body">
 					<h5 class="card-title"><?php echo $recipes[$num]->name; ?></h5>
 					<p class="card-text"><?php echo $recipes[$num]->description; ?></p>
@@ -39,7 +50,7 @@
 		</div>
 		<div class="col-sm">
 			<div class="card" style="width: 18rem;">
-				<img class="card-img-top" src="https://via.placeholder.com/350x150" alt="Card image cap">
+				<img class="card-img-top" style="height: 12rem" src="recipeImages/<?php echo $recipes[$num]->image; ?>" alt="Card image cap">
 				<div class="card-body">
 					<h5 class="card-title"><?php echo $recipes[$num]->name; ?></h5>
 					<p class="card-text"><?php echo $recipes[$num]->description; ?></p>
@@ -54,10 +65,11 @@
 	<?php endfor; ?>
 		<?php if ((count($recipes) % 3) != 0): ?>
 			<div class="row" style="padding-top: 3%">
+				<?php $midnum = $num;?>
 				<?php for ($i = $num; $i < count($recipes); $i++): ?>
 					<div class="col-sm">
 						<div class="card" style="width: 18rem;">
-							<img class="card-img-top" src="https://via.placeholder.com/350x150" alt="Card image cap">
+							<img class="card-img-top" style="height: 12rem" src="recipeImages/<?php echo $recipes[$num]->image; ?>" alt="Card image cap">
 							<div class="card-body">
 								<h5 class="card-title"><?php echo $recipes[$num]->name; ?></h5>
 								<p class="card-text"><?php echo $recipes[$num]->description; ?></p>
@@ -69,6 +81,11 @@
 						<?php $num += 1; ?>
 					</div>
 				<?php endfor; ?>
+				<?php if ((count($recipes) - $midnum) % 2 == 0): ?>
+					<div class="col-sm">
+						&nbsp;
+					</div>
+				<?php endif;?>
 			</div>
 		<?php endif; ?>
 
@@ -88,7 +105,7 @@
 			<div class="modal-body">
 				<div class="row">
 					<div class="col-lg-6">
-						<img class="card-img-top" src="https://via.placeholder.com/600x600" alt="Card image cap">
+						<img class="card-img-top" src="recipeImages/<?php echo $recipe->image;?>" alt="Card image cap">
 					</div>
 					<div class="col-lg-6">
 						<h3>Benodigdheden:</h3>
@@ -134,6 +151,12 @@
 						</div>
 					</div>
 					<?php echo form_close(); ?>
+				<? else: ?>
+					<div class="row">
+						<div class="col">
+							<button type="button" class="btn btn-success" data-dismiss="modal">Sluit</button>
+						</div>
+					</div>
 				<? endif; ?>
 			</div>
 		</div>
@@ -154,7 +177,7 @@
 				</button>
 			</div>
 			<div class="modal-body">
-				<?php $attributes = array('id' =>'addition_form', 'class' => 'form_horizontal');?>
+				<?php $attributes = array('id' =>'addition_form', 'class' => 'form_horizontahomel', 'enctype' => 'multipart/form-data');?>
 
 				<?php if($this->session->flashdata('errors')){
 
@@ -162,7 +185,7 @@
 
 				} ?>
 
-				<?php echo form_open('recipes/add', $attributes); ?>
+				<?php echo form_open_multipart('recipes/add', $attributes); ?>
 
 				<div class="form-group">
 					<?php echo form_label('Naam:'); ?>

@@ -5,6 +5,17 @@
 
 
 <div class="container">
+	<?php if ($this->session->flashdata('errors')):?>
+
+		<div class="alert alert-danger alert-dismissible fade show" role="alert">
+			<?php echo $this->session->flashdata('errors'); ?>
+			<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+			</button>
+		</div>
+
+	<?php endif; ?>
+
 	<div class="row">
 		<div class="col-sm">
 			&nbsp;&nbsp;

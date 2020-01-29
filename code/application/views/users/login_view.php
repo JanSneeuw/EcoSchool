@@ -30,9 +30,21 @@
 <?php else: ?>
 
 <div class="container">
+	<?php if ($this->session->flashdata('errors')): ?>
+	<div class="alert alert-danger alert-dismissible fade show" role="alert">
+		<?php echo $this->session->flashdata('errors'); ?>
+		<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+			<span aria-hidden="true">&times;</span>
+		</button>
+	</div>
+	<?php endif; ?>
+
+	<div class="row">
+		&nbsp;
+	</div>
 	<div class="row">
 		<div class="col-sm">
-			&nbsp;
+			&nbsp;&nbsp;
 		</div>
 		<div class="col-sm">
 			<div class="card" style="width: 18rem;">
@@ -41,11 +53,6 @@
 
 <?php $attributes = array('id' =>'login_form', 'class' => 'form_horizontal');?>
 
-<?php if($this->session->flashdata('errors')){
-
-echo $this->session->flashdata('errors');
-
-} ?>
 
 <?php echo form_open('users/login', $attributes); ?>
 
@@ -105,7 +112,7 @@ echo $this->session->flashdata('errors');
 	<?php
 
 	$data = array(
-		'class' => 'btn btn-primary',
+		'class' => 'btn btn-success',
 		'name' => 'Submit',
 		'value' => 'Login'
 
@@ -117,7 +124,7 @@ echo $this->session->flashdata('errors');
 </div>
 <?php echo form_close(); ?>
 					&nbsp;
-					<p>Not registered yet? <a href="<?php echo base_url();?>index.php?/users/register">Register</a></p>
+					<p>Nog niet geregistreerd? <a href="<?php echo base_url();?>index.php?/users/register">Registreer</a></p>
 				</div>
 			</div>
 		</div>
