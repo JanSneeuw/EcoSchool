@@ -24,9 +24,13 @@ class Users extends CI_Controller {
 
 			if ($this->user_model->create_user()){
 				$this->session->set_flashdata('user_registered', "User has been registered!");
-				redirect('loginp');
+				redirect('users/loginp');
 			}else{
-				$this->session->set_flashdata('errors', 'Er is iets mis gegaan, probeer het later nogmaals.');
+				if ($this->session->flashdata('register_error')){
+					$this->session->set_flashdata('errors', $this->session->flashdata('register_error'));
+				}else {
+					$this->session->set_flashdata('errors', 'Er is iets mis gegaan, probeer het later nogmaals.');
+				}
 				redirect('users/register');
 			}
 		}
@@ -68,7 +72,7 @@ class Users extends CI_Controller {
 
 				$this->session->set_userdata($user_data);
 
-				$this->session->set_flashdata('success', "You are now logged in.");
+				$this->session->set_flashdata('success', "Je bent nu ingelogd.");
 
 				redirect('home');
 

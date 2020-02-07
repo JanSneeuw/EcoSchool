@@ -31,9 +31,9 @@
 	<div class="row">
 		<?php if($this->session->userdata('logged_in')): ?>
 			<?php if ($this->session->flashdata('saved')): ?>
-				<a href="<?php echo base_url(); ?>index.php?/scorecalculator/update" class="btn btn-success" role="button">Antwoorden updaten</a>
+				<a href="index.php?/scorecalculator/update" class="btn btn-success" role="button">Antwoorden updaten</a>
 			<?php else: ?>
-				<a href="<?php echo base_url(); ?>index.php?/scorecalculator/save" class="btn btn-success" role="button">Antwoorden opslaan</a>
+				<a href="index.php?/scorecalculator/save" class="btn btn-success" role="button">Antwoorden opslaan</a>
 			<?php endif; ?>
 		<?php endif; ?>
 	</div>

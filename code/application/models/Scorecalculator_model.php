@@ -293,7 +293,7 @@ class Scorecalculator_model extends CI_Model
 
 	public function update(){
 		$delete_data = $this->db->delete('user_answers', array('user_id' => $this->session->userdata('user_id')));
-		$this->save();
+		return $this->save();
 	}
 
 	public function hasBeenSaved($user_id){

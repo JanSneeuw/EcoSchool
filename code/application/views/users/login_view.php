@@ -15,9 +15,9 @@
 
 	$data = array(
 
-		'class' => 'btn btn-primary',
+		'class' => 'btn btn-success',
 		'name' => 'Logout',
-		'value' => 'Logout'
+		'value' => 'Loguit'
 
 	);
 
@@ -64,7 +64,7 @@
 		$data = array(
 			'class' => 'form-control',
 			'name' => 'Username',
-			'placeholder' => 'Enter your username'
+			'placeholder' => 'Schrijf hier je gebruikersnaam.'
 
 		);
 
@@ -81,7 +81,7 @@
 	$data = array(
 		'class' => 'form-control',
 		'name' => 'Password',
-		'placeholder' => 'Enter your password'
+		'placeholder' => 'Schrijf hier je wachtwoord.'
 
 	);
 
@@ -98,7 +98,7 @@
 	$data = array(
 		'class' => 'form-control',
 		'name' => 'Confirm_password',
-		'placeholder' => 'Confirm your password'
+		'placeholder' => 'Schrijf hier nogmaals je wachtwoord.'
 
 	);
 

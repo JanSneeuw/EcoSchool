@@ -15,15 +15,17 @@
 		</div>
 
 	<?php endif; ?>
-
+	<div class="row">
+		&nbsp;
+	</div>
 	<div class="row">
 		<div class="col-sm">
-			&nbsp;&nbsp;
+			&nbsp;&nbsp;&nbsp;
 		</div>
 		<div class="col-sm">
 			<div class="card" style="width: 18rem;">
 				<div class="card-body">
-					<h2 class="text-center">Register</h2>
+					<h2 class="text-center">Registreer</h2>
 <?php echo form_open('users/register', $attributes); ?>
 
 
@@ -35,7 +37,7 @@
 	$data = array(
 		'class' => 'form-control',
 		'name' => 'First_name',
-		'placeholder' => 'Enter your first name'
+		'placeholder' => 'Schrijf hier je voornaam.'
 
 	);
 
@@ -53,7 +55,7 @@
 	$data = array(
 		'class' => 'form-control',
 		'name' => 'Last_name',
-		'placeholder' => 'Enter your last name'
+		'placeholder' => 'Schrijf hier je achternaam.'
 
 	);
 
@@ -70,7 +72,7 @@
 		$data = array(
 			'class' => 'form-control',
 			'name' => 'Username',
-			'placeholder' => 'Enter your username'
+			'placeholder' => 'Schrijf hier je gebruikersnaam.'
 
 		);
 
@@ -88,7 +90,7 @@
 	$data = array(
 		'class' => 'form-control',
 		'name' => 'Email',
-		'placeholder' => 'Enter your e-mail address'
+		'placeholder' => 'Schrijf hier je email adres.'
 
 	);
 
@@ -105,7 +107,7 @@
 	$data = array(
 		'class' => 'form-control',
 		'name' => 'Password',
-		'placeholder' => 'Enter your password'
+		'placeholder' => 'Schrijf hier je wachtwoord.'
 
 	);
 
@@ -122,7 +124,7 @@
 	$data = array(
 		'class' => 'form-control',
 		'name' => 'Confirm_password',
-		'placeholder' => 'Confirm your password'
+		'placeholder' => 'Schrijf hier nogmaals je wachtwoord.'
 
 	);
 
@@ -136,9 +138,9 @@
 	<?php
 
 	$data = array(
-		'class' => 'btn btn-primary',
+		'class' => 'btn btn-success',
 		'name' => 'Submit',
-		'value' => 'Register'
+		'value' => 'Registreer'
 
 	);
 

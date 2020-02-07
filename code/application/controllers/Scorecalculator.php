@@ -23,8 +23,8 @@ class Scorecalculator extends CI_Controller{
 	}
 
 	public function save(){
-		$save = $this->scorecalculator_model->save();
-		if ($save){
+		$s = $this->scorecalculator_model->save();
+		if ($s){
 			redirect('users/personal_advice');
 		}else{
 			$this->session->set_flashdata('errors', 'Sorry, kon je advies niet opslaan.');

@@ -21,7 +21,7 @@
 		<div class="row h-100 align-items-center">
 			<div class="col-12 text-center">
 				<h1 class="font-weight-light" style="color: white">Hoe groen leef jij?</h1>
-				<a href="<?php echo base_url(); ?>index.php?/scorecalculator" role="button" class="btn btn-outline-light">Doe nu de test!</a>
+				<a href="index.php?/scorecalculator" role="button" class="btn btn-outline-light">Doe nu de test!</a>
 			</div>
 		</div>
 	</div>

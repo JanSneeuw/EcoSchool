@@ -30,7 +30,7 @@
 		<h2>Je hebt de score calculator nog niet gedaan!</h2>
 	</div>
 	<div class="row">
-		<h4>Doe deze <a href="<?php echo base_url(); ?>index.php?/scorecalculator">hier</a></h4>
+		<h4>Doe deze <a href="index.php?/scorecalculator">hier</a></h4>
 	</div>
 	<?php endif; ?>
 	<?php if ($score != null): ?>

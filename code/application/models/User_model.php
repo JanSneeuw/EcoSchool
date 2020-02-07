@@ -22,11 +22,39 @@ class User_model extends CI_Model {
 			'admin' => false
 
 		);
-
+		if (!$this->usernameUnique($this->input->post('Username'))){
+			$this->session->set_flashdata('register_error', 'Deze gebruikersnaam bestaat al.');
+			return false;
+		}else if (!$this->emailUnique($this->input->post('Email'))){
+			$this->session->set_flashdata('register_error', 'Er is al een account geregistreerd op dit email adres.');
+			return false;
+		}else {
 		$insert_data = $this->db->insert('users', $data);
 
 		return $insert_data;
+		}
+	}
 
+	public function usernameUnique($username){
+		$this->db->where('username', $username);
+		$result = $this->db->get('users');
+		$row = $result->row();
+		if (isset($row)){
+			return false;
+		}else{
+			return true;
+		}
+	}
+
+	public function emailUnique($email){
+		$this->db->where('email', $email);
+		$result = $this->db->get('users');
+		$row = $result->row();
+		if (isset($row)){
+			return false;
+		}else{
+			return true;
+		}
 	}
 
 	public function login_user($username, $password){
