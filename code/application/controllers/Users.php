@@ -15,6 +15,9 @@ class Users extends CI_Controller {
 
 		if ($this->form_validation->run() == false){
 
+
+			$this->session->set_flashdata('errors', validation_errors());
+
 			$data['main_view'] = 'users/register_view';
 
 			$this->load->view('layouts/main', $data);
@@ -49,11 +52,8 @@ class Users extends CI_Controller {
 		$this->form_validation->set_rules('Confirm_password', 'Confirm Password', 'trim|required|min_length[4]|matches[Password]');
 
 		if($this->form_validation->run() == false){
-			$data = array(
-				'errors' => validation_errors()
-			);
 
-			$this->session->set_flashdata($data);
+			$this->session->set_flashdata('errors', validation_errors());
 
 			redirect('users/loginp');
 		}else{

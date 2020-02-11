@@ -11,7 +11,7 @@
 
 	<?php endif; ?>
 
-	<h1>Recipes</h1>
+	<h1>Recepten</h1>
 	<?php if($this->session->userdata('logged_in')): ?>
 		<button type="button" class="btn btn-success" data-toggle="modal" data-target="#recipeAdder">
 			Recept Toevoegen
@@ -22,7 +22,7 @@
 	<?php for ($i = 0; $i < (count($recipes) - (count($recipes) % 3)) / 3; $i++): ?>
 	<div class="row" style="padding-top: 3%">
 		<div class="col-sm">
-			<div class="card" style="width: 18rem;" data-toggle="modal" data-target=<?php echo $recipes[$num]->id ?>>
+			<div class="card h-100" style="width: 18rem;" data-toggle="modal" data-target=<?php echo $recipes[$num]->id ?>>
 				<img class="card-img-top" style="height: 12rem" src="recipeImages/<?php echo $recipes[$num]->image;?>" alt="Card image cap">
 				<div class="card-body">
 					<h5 class="card-title"><?php echo $recipes[$num]->name; ?></h5>
@@ -36,7 +36,7 @@
 			<?php $num += 1; ?>
 		</div>
 		<div class="col-sm">
-			<div class="card" style="width: 18rem;">
+			<div class="card h-100" style="width: 18rem;">
 				<img class="card-img-top" style="height: 12rem" src="recipeImages/<?php echo $recipes[$num]->image;?>" alt="Card image cap">
 				<div class="card-body">
 					<h5 class="card-title"><?php echo $recipes[$num]->name; ?></h5>
@@ -48,8 +48,8 @@
 			</div>
 			<?php $num += 1; ?>
 		</div>
-		<div class="col-sm">
-			<div class="card" style="width: 18rem;">
+		<div class="col-sm ">
+			<div class="card h-100" style="width: 18rem;">
 				<img class="card-img-top" style="height: 12rem" src="recipeImages/<?php echo $recipes[$num]->image; ?>" alt="Card image cap">
 				<div class="card-body">
 					<h5 class="card-title"><?php echo $recipes[$num]->name; ?></h5>
@@ -68,7 +68,7 @@
 				<?php $midnum = $num;?>
 				<?php for ($i = $num; $i < count($recipes); $i++): ?>
 					<div class="col-sm">
-						<div class="card" style="width: 18rem;">
+						<div class="card h-100" style="width: 18rem;">
 							<img class="card-img-top" style="height: 12rem" src="recipeImages/<?php echo $recipes[$num]->image; ?>" alt="Card image cap">
 							<div class="card-body">
 								<h5 class="card-title"><?php echo $recipes[$num]->name; ?></h5>
@@ -104,16 +104,19 @@
 			</div>
 			<div class="modal-body">
 				<div class="row">
-					<div class="col-lg-6">
+					<div class="col-lg-12">
 						<img class="card-img-top" src="recipeImages/<?php echo $recipe->image;?>" alt="Card image cap">
 					</div>
-					<div class="col-lg-6">
+
+				</div>
+				<div class="row" style="padding-top: 3%">
+					<div class="col-lg-12">
 						<h3>Benodigdheden:</h3>
 						<p><?php echo nl2br($recipe->requirements); ?></p>
 					</div>
 				</div>
 				<div class="row" style="padding-top: 3%">
-					<div class="col-lg">
+					<div class="col-lg-12">
 						<h3>Recept:</h3>
 						<p><?php echo nl2br($recipe->recipe); ?></p>
 					</div>
@@ -122,12 +125,6 @@
 			<div class="modal-footer">
 				<?php if ($this->session->userdata('admin') == true || $recipe->adder_id == $this->session->userdata('user_id')): ?>
 					<?php $attributes = array('id' =>'remove_recipe', 'class' => 'form_horizontal');?>
-
-					<?php if($this->session->flashdata('errors')){
-
-						echo $this->session->flashdata('errors');
-
-					} ?>
 
 					<?php echo form_open('recipes/delete/' . $recipe->id, $attributes); ?>
 					<div class="row">
@@ -179,12 +176,6 @@
 			<div class="modal-body">
 				<?php $attributes = array('id' =>'addition_form', 'class' => 'form_horizontahomel', 'enctype' => 'multipart/form-data');?>
 
-				<?php if($this->session->flashdata('errors')){
-
-					echo $this->session->flashdata('errors');
-
-				} ?>
-
 				<?php echo form_open_multipart('recipes/add', $attributes); ?>
 
 				<div class="form-group">
@@ -195,7 +186,7 @@
 					$data = array(
 						'class' => 'form-control',
 						'name' => 'Naam',
-						'placeholder' => 'Schrijf hier de naaam van je recept.'
+						'placeholder' => 'Schrijf hier de naam van je recept.'
 
 					);
 
@@ -213,7 +204,7 @@
 						'class' => 'form-control',
 						'rows' => '4',
 						'name' => 'Beschrijving',
-						'placeholder' => 'Schrijf hier de beschrijving van je recept.'
+						'placeholder' => 'Schrijf hier de beschrijving van je recept in maximaal 125 characters.'
 
 					);
 
