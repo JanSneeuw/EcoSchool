@@ -75,10 +75,10 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => 'rdbms.strato.de',
-	'username' => 'U4037078',
-	'password' => 'SchoolSQLPw153__',
-	'database' => 'DB4037078',
+	'hostname' => 'mysql',
+	'username' => 'eco',
+	'password' => 'password',
+	'database' => 'ecodb',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,
